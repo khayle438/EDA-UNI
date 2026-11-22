@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fees Payment | EDA University</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(160deg, #ffffff 0%, #e6f3fb 100%);
+    }
+
+    /* Header with navigation */
+    .site-header {
+      flex-wrap: wrap;
+    }
+
+    .site-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 20px;
+    }
+
+    .site-nav a:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .site-nav a.active {
+      background: #fff;
+      color: #2b8cc0;
+    }
+
+    .site-nav a:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .fees-main {
+      max-width: 1000px;
+      margin: 36px auto;
+    }
+
+    .page-title h2 {
+      color: #2b8cc0;
+      font-size: 1.8rem;
+    }
+
+    .page-title p {
+      color: #5b6b77;
+      margin: 4px 0 22px;
+    }
+
+    .fees-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(68, 170, 221, 0.22);
+      animation: rise 0.6s ease both;
+    }
+
+    .panel h3 {
+      color: #2b8cc0;
+      padding: 18px 20px;
+      border-bottom: 2px solid #c9e3f3;
+    }
+
+    /* Total paid */
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: linear-gradient(145deg, #4ad, #2b8cc0);
+      color: #fff;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .total strong {
+      font-size: 1.4rem;
+    }
+
+    /* Payments table */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 480px;
+    }
+
+    th {
+      background: #4ad;
+      color: #fff;
+      text-align: left;
+      padding: 12px 16px;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e3f0f8;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f3f9fd;
+    }
+
+    td.amount,
+    th.amount {
+      text-align: right;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #e3f2fb;
+      color: #2b8cc0;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    tr.new-row {
+      animation: flash 1.6s ease;
+    }
+
+    @keyframes flash {
+      from { background: #bfe3f6; }
+      to   { background: transparent; }
+    }
+
+    /* Payment form */
+    .pay-form {
+      padding: 20px;
+    }
+
+    .naira-field {
+      position: relative;
+    }
+
+    .naira-field span {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #2b8cc0;
+      font-weight: 700;
+    }
+
+    .naira-field input {
+      padding-left: 30px;
+    }
+
+    .message {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: #e3f2fb;
+      border: 2px solid #4ad;
+      color: #1d2b36;
+      font-weight: 600;
+    }
+
+    .message[hidden] {
+      display: none;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .panel, tr.new-row { animation: none; }
+    }
+
+    @media (max-width: 820px) {
+      .fees-grid { grid-template-columns: 1fr; }
+      .site-nav { margin-left: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header: school logo, name and navigation -->
+  <header class="site-header">
+    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="#fff"/>
+      <path d="M32 14 8 26l24 12 24-12z" fill="#4ad"/>
+      <path d="M18 33v10c0 4 6 8 14 8s14-4 14-8V33l-14 7z" fill="#4ad"/>
+      <rect x="53" y="26" width="3" height="16" fill="#4ad"/>
+    </svg>
+    <h1>EDA University</h1>
+
+    <nav class="site-nav" aria-label="Main">
+      <a href="profile.html">Profile</a>
+      <a href="results.html">Results</a>
+      <a href="fees-payment.html" class="active">Fees</a>
+      <a href="login.html">Logout</a>
+    </nav>
+  </header>
+
+  <main class="fees-main">
+    <div class="page-title">
+      <h2>Fees payment</h2>
+      <p>See your past payments and make a new one.</p>
+    </div>
+
+    <div class="fees-grid">
+
+      <!-- Past payments -->
+      <section class="panel" aria-labelledby="historyTitle">
+        <h3 id="historyTitle">Payment history</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Reference</th>
+                <th>Reason</th>
+                <th class="amount">Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="paymentRows">
+              <tr data-amount="150000">
+                <td>12 Sep 2025</td>
+                <td>EDA-482913</td>
+                <td>School fees</td>
+                <td class="amount">&#8358;150,000</td>
+                <td><span class="status">Successful</span></td>
+              </tr>
+              <tr data-amount="60000">
+                <td>14 Sep 2025</td>
+                <td>EDA-482977</td>
+                <td>Hostel fee</td>
+                <td class="amount">&#8358;60,000</td>
+                <td><span class="status">Successful</span></td>
+              </tr>
+              <tr data-amount="15000">
+                <td>20 Sep 2025</td>
+                <td>EDA-483204</td>
+                <td>Technology fee</td>
+                <td class="amount">&#8358;15,000</td>
+                <td><span class="status">Successful</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="total">
+          <span>Total paid</span>
+          <strong id="totalPaid">&#8358;225,000</strong>
+        </div>
+      </section>
+
+      <!-- New payment form -->
+      <section class="panel" aria-labelledby="payTitle">
+        <h3 id="payTitle">Make a new payment</h3>
+        <form class="pay-form" id="payForm">
+          <div class="form-group">
+            <label for="reason">Payment reason</label>
+            <select id="reason" name="reason" required>
+              <option value="" disabled selected>Select reason</option>
+              <option value="School fees" data-amount="150000">School fees</option>
+              <option value="Hostel fee" data-amount="60000">Hostel fee</option>
+              <option value="Technology fee" data-amount="15000">Technology fee</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <div class="naira-field">
+              <span>&#8358;</span>
+              <input type="number" id="amount" name="amount" min="1" step="1" placeholder="0" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="method">Payment method</label>
+            <select id="method" name="method" required>
+              <option value="" disabled selected>Select method</option>
+              <option value="Card">Debit card</option>
+              <option value="Transfer">Bank transfer</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn">Pay now</button>
+          <p class="message" id="message" role="status" hidden></p>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer: copyright and current year -->
+  <footer class="site-footer">
+    &copy; <span id="year"></span> EDA University. All rights reserved.
+  </footer>
+
+  
+
+</body>
+</html>

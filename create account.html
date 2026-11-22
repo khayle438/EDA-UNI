@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+		<title>Home</title>
+		<style>
+		  
+		   /* EDA University Portal - shared styles
+   Colours: #4ad and white */
+
+:root {
+  --main: #4ad;
+  --main-dark: #2b8cc0;
+  --white: #fff;
+  --text: #1d2b36;
+  --border: #c9e3f3;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--main);
+  color: var(--white);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.site-header h1 {
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* ---------- Main ---------- */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 560px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-top: 6px solid var(--main);
+  border-radius: 10px;
+  padding: 28px;
+}
+
+.card h2 {
+  color: var(--main-dark);
+  margin-bottom: 4px;
+}
+
+.card .subtitle {
+  margin-bottom: 22px;
+  color: #5b6b77;
+}
+
+/* ---------- Forms ---------- */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--text);
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--main);
+  box-shadow: 0 0 0 3px rgba(68, 170, 221, 0.25);
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--main);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--main-dark);
+}
+
+.form-note {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.form-note a {
+  color: var(--main-dark);
+  font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--main);
+  color: var(--white);
+  text-align: center;
+  padding: 14px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .site-header h1 {
+    font-size: 1.15rem;
+  }
+  .card {
+    padding: 20px;
+  }
+}
+
+			</style>
+	  </head>
+	  </body>
+	  <div>
+		<header>
+		<h1>EDA University</h1>
+		<p>Experience the learning on another level</p>
+			 <nav class="site-nav" aria-label="Main">
+      <a href="profile.html">Profile</a>
+      <a href="results.html" class="active">Results</a>
+      <a href="fees-payment.html">Fees</a>
+      <a href="login.html">Logout</a>
+    </nav>
+	</header>
+	
+		<main>
+			<form>
+				<label>Full Name</label>
+				<br/>
+				<input type="text" placeholder="Name" required/>
+				<br/>
+				<label>Email Address</label>
+				<br/>
+				<input type="email" placeholder="email" required/>
+				<br/>
+				<label>Date of Birth</label>
+				<br/>
+				<input type="Date of birth" placeholder="dd/mm/yy" required/>
+				<br/>
+				<label>Gender</label>
+				<br/>
+				<input type="Gender" placeholder="gender" required/>
+				<br/>
+				<label>Origin</label>
+				<br/>
+				<input type="Origin" placeholder="Origin" required/>
+				<br/>
+				<label>Phone Number</label>
+				<br/>
+				<input type="Phone number" placeholder="Number" required/>
+				<br/>
+				<label>Message</label>
+				<br/>
+				<textarea></textarea>
+				<br/>
+				<input type="submit"/>
+			</form>
+				
+		</main>
+		
+	    <footer>
+		 <h1>EDA University</h1>
+		 <p>&copy;copyright eda store 2026</p>
+	   </footer>
+    </div>
+  </body>
+ </html>

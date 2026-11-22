@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results | EDA University</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(160deg, #ffffff 0%, #e6f3fb 100%);
+    }
+
+    /* Header with navigation */
+    .site-header {
+      flex-wrap: wrap;
+    }
+
+    .site-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 20px;
+    }
+
+    .site-nav a:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .site-nav a.active {
+      background: #fff;
+      color: #2b8cc0;
+    }
+
+    .site-nav a:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .results-main {
+      max-width: 900px;
+      margin: 36px auto;
+    }
+
+    .page-title h2 {
+      color: #2b8cc0;
+      font-size: 1.8rem;
+    }
+
+    .page-title p {
+      color: #5b6b77;
+      margin: 4px 0 22px;
+    }
+
+    /* Summary boxes */
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .summary div {
+      background: #fff;
+      border: 2px solid #c9e3f3;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .summary strong {
+      display: block;
+      font-size: 1.8rem;
+      color: #2b8cc0;
+    }
+
+    .summary span {
+      color: #5b6b77;
+      font-size: 0.9rem;
+    }
+
+    .summary .gpa {
+      background: linear-gradient(145deg, #4ad, #2b8cc0);
+      border-color: #4ad;
+    }
+
+    .summary .gpa strong,
+    .summary .gpa span {
+      color: #fff;
+    }
+
+    /* Results table */
+    .table-wrap {
+      overflow-x: auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(68, 170, 221, 0.22);
+      animation: rise 0.6s ease both;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+    }
+
+    caption {
+      text-align: left;
+      padding: 16px 18px;
+      font-weight: 600;
+      color: #2b8cc0;
+      border-bottom: 2px solid #c9e3f3;
+    }
+
+    th {
+      background: #4ad;
+      color: #fff;
+      text-align: left;
+      padding: 12px 16px;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e3f0f8;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f3f9fd;
+    }
+
+    tbody tr:hover {
+      background: #e3f2fb;
+    }
+
+    td.num,
+    th.num {
+      text-align: center;
+    }
+
+    .grade {
+      display: inline-block;
+      min-width: 32px;
+      padding: 3px 0;
+      border-radius: 6px;
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+    }
+
+    .grade.a { background: #2b8cc0; }
+    .grade.b { background: #4ad; }
+    .grade.c { background: #7fc3e6; }
+    .grade.d { background: #a9a9a9; }
+
+    .key {
+      margin-top: 18px;
+      color: #5b6b77;
+      font-size: 0.9rem;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .table-wrap { animation: none; }
+    }
+
+    @media (max-width: 560px) {
+      .summary { grid-template-columns: 1fr; }
+      .site-nav { margin-left: 0; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header: school logo, name and navigation -->
+  <header class="site-header">
+    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="#fff"/>
+      <path d="M32 14 8 26l24 12 24-12z" fill="#4ad"/>
+      <path d="M18 33v10c0 4 6 8 14 8s14-4 14-8V33l-14 7z" fill="#4ad"/>
+      <rect x="53" y="26" width="3" height="16" fill="#4ad"/>
+    </svg>
+    <h1>EDA University</h1>
+
+    <nav class="site-nav" aria-label="Main">
+      <a href="profile.html">Profile</a>
+      <a href="results.html" class="active">Results</a>
+      <a href="fees-payment.html">Fees</a>
+      <a href="login.html">Logout</a>
+    </nav>
+  </header>
+
+  <main class="results-main">
+    <div class="page-title">
+      <h2>Semester results</h2>
+      <p>First Semester, 2025/2026 session</p>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary">
+      <div><strong>7</strong><span>Courses taken</span></div>
+      <div><strong>18</strong><span>Total units</span></div>
+      <div class="gpa"><strong>3.89</strong><span>Semester GPA</span></div>
+    </div>
+
+    <!-- Results table -->
+    <div class="table-wrap">
+      <table>
+        <caption>Courses and results</caption>
+        <thead>
+          <tr>
+            <th>Course code</th>
+            <th>Course title</th>
+            <th class="num">Units</th>
+            <th class="num">Score</th>
+            <th class="num">Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CSC 201</td>
+            <td>Data Structures</td>
+            <td class="num">3</td>
+            <td class="num">78</td>
+            <td class="num"><span class="grade a">A</span></td>
+          </tr>
+          <tr>
+            <td>CSC 203</td>
+            <td>Computer Programming II</td>
+            <td class="num">3</td>
+            <td class="num">65</td>
+            <td class="num"><span class="grade b">B</span></td>
+          </tr>
+          <tr>
+            <td>CSC 205</td>
+            <td>Web Technologies</td>
+            <td class="num">2</td>
+            <td class="num">85</td>
+            <td class="num"><span class="grade a">A</span></td>
+          </tr>
+          <tr>
+            <td>MTH 201</td>
+            <td>Linear Algebra</td>
+            <td class="num">3</td>
+            <td class="num">58</td>
+            <td class="num"><span class="grade c">C</span></td>
+          </tr>
+          <tr>
+            <td>STA 201</td>
+            <td>Probability and Statistics</td>
+            <td class="num">2</td>
+            <td class="num">72</td>
+            <td class="num"><span class="grade a">A</span></td>
+          </tr>
+          <tr>
+            <td>PHY 205</td>
+            <td>Electricity and Magnetism</td>
+            <td class="num">3</td>
+            <td class="num">49</td>
+            <td class="num"><span class="grade d">D</span></td>
+          </tr>
+          <tr>
+            <td>GST 201</td>
+            <td>Entrepreneurship Studies</td>
+            <td class="num">2</td>
+            <td class="num">66</td>
+            <td class="num"><span class="grade b">B</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="key">Grading: A = 70-100 (5 points), B = 60-69 (4), C = 50-59 (3), D = 45-49 (2), E = 40-44 (1), F = 0-39 (0).</p>
+  </main>
+
+  <!-- Footer: copyright and current year -->
+  <footer class="site-footer">
+    &copy; <span id="year"></span> EDA University. All rights reserved.
+  </footer>
+
+  
+
+</body>
+</html>

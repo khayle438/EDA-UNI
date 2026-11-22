@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile | EDA University</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(160deg, #ffffff 0%, #e6f3fb 100%);
+    }
+
+    /* Header with navigation */
+    .site-header {
+      flex-wrap: wrap;
+    }
+
+    .site-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 20px;
+    }
+
+    .site-nav a:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .site-nav a.active {
+      background: #fff;
+      color: #2b8cc0;
+    }
+
+    .site-nav a:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .profile-main {
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    .profile-wrap {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 18px 45px rgba(68, 170, 221, 0.28);
+      animation: rise 0.6s ease both;
+    }
+
+    /* Left: image and actions */
+    .side {
+      background: linear-gradient(145deg, #4ad 0%, #2b8cc0 100%);
+      color: #fff;
+      padding: 36px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .student-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fff;
+      background: #fff;
+      margin-bottom: 16px;
+    }
+
+    .side h2 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .side .matric {
+      opacity: 0.95;
+      margin-bottom: 26px;
+    }
+
+    .side .action {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .side .action.primary {
+      background: #fff;
+      color: #2b8cc0;
+    }
+
+    .side .action.primary:hover {
+      background: #e6f3fb;
+    }
+
+    .side .action.outline {
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    .side .action.outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .side .action:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* Right: details */
+    .details {
+      padding: 36px 32px;
+    }
+
+    .details h3 {
+      color: #2b8cc0;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      row-gap: 0;
+    }
+
+    dt,
+    dd {
+      padding: 14px 0;
+      border-bottom: 1px solid #e3f0f8;
+    }
+
+    dt {
+      font-weight: 600;
+      color: #5b6b77;
+    }
+
+    dd {
+      word-break: break-word;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .profile-wrap { animation: none; }
+    }
+
+    @media (max-width: 760px) {
+      .profile-wrap { grid-template-columns: 1fr; }
+      .site-nav { margin-left: 0; width: 100%; }
+      .details { padding: 26px 20px; }
+      dl { grid-template-columns: 1fr; }
+      dt { border-bottom: none; padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header: school logo, name and navigation -->
+  <header class="site-header">
+    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="#fff"/>
+      <path d="M32 14 8 26l24 12 24-12z" fill="#4ad"/>
+      <path d="M18 33v10c0 4 6 8 14 8s14-4 14-8V33l-14 7z" fill="#4ad"/>
+      <rect x="53" y="26" width="3" height="16" fill="#4ad"/>
+    </svg>
+    <h1>EDA University</h1>
+
+    <nav class="site-nav" aria-label="Main">
+      <a href="profile.html" class="active">Profile</a>
+      <a href="results.html">Results</a>
+      <a href="fees-payment.html">Fees</a>
+      <a href="login.html">Logout</a>
+    </nav>
+  </header>
+
+  <main class="profile-main">
+    <div class="profile-wrap">
+
+      <!-- Left: student image, links -->
+      <aside class="side">
+        <!-- To use a real photo, change src to your image file, e.g. src="student.jpg" -->
+        <img class="student-img" id="studentImg" alt="Student photo"
+             src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e6f3fb'/%3E%3Ccircle cx='50' cy='38' r='18' fill='%234ad'/%3E%3Cpath d='M14 100c0-24 16-38 36-38s36 14 36 38z' fill='%234ad'/%3E%3C/svg%3E">
+
+        <h2 id="sideName">Ada Okafor</h2>
+        <p class="matric" id="sideMatric">EDA/2025/0142</p>
+
+        <a href="fees-payment.html" class="action primary">Fees payment</a>
+        <a href="results.html" class="action outline">View results</a>
+        <a href="login.html" class="action outline">Logout</a>
+      </aside>
+
+      <!-- Right: student details -->
+      <section class="details">
+        <h3>Student details</h3>
+        <dl>
+          <dt>Full name</dt>
+          <dd id="dName">Ada Okafor</dd>
+
+          <dt>Matric number</dt>
+          <dd id="dMatric">EDA/2025/0142</dd>
+
+          <dt>Date of birth</dt>
+          <dd id="dDob">14 March 2005</dd>
+
+          <dt>Gender</dt>
+          <dd id="dGender">Female</dd>
+
+          <dt>Email</dt>
+          <dd id="dEmail">ada.okafor@example.com</dd>
+
+          <dt>Bio</dt>
+          <dd id="dBio">Computer science student who loves building websites and solving problems.</dd>
+        </dl>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer: copyright and current year -->
+  <footer class="site-footer">
+    &copy; <span id="year"></span> EDA University. All rights reserved.
+  </footer>
+
+
+</body>
+</html>
